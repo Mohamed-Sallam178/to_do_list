@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List </title>
+    <style>
+        .card{
+            margin: 100px auto;
+            text-align: center;
+            width: 300px;
+            height: auto;
+            background-color: #282828;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        .list {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-field{
+            width: 100%;
+            position: relative;
+        }
+        input{
+            background-color: #474747;
+            border: none;
+            width: 100%;
+            border-radius: 10px;
+            padding: 10px 0 10px 10px;
+            outline: none;  
+        }
+        input::placeholder {
+            color: #aca7a7;
+        }
+        input:focus {
+            border: 1px solid #5c5c5c;
+        }
+        button#add-task {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            width: 50px;
+            background-color: #313131;
+            color: #fff;
+            cursor: pointer;
+            height: 100%;
+            right: -15px;
+            padding: 0;
+        }
+        ul.home-work{
+            padding: 0;
+        }
+        .new-task {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="list">
+            <div class="input-field">
+                <input type="text" name="" id="item-list" placeholder="write your homework">
+                <button id="add-task">Add</button>
+            </div>
+            <ul class="home-work">
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script >
+        var inputItem = document.querySelector('#add-task'); 
+        console.log(inputItem);
+        inputItem.onclick = addItem;
+        function addItem(){
+            var item = document.querySelector('#item-list');
+            var list = document.querySelector('.home-work');
+            var newDiv = document.createElement('div');
+            newDiv.classList.add('new-task');
+            var textValue = document.createElement('h2');
+            var newInput = document.createElement('input');
+            newInput.setAttribute('type','checkbox');
+            newDiv.append(textValue,newInput)
+            list.append(newDiv);
+            textValue.innerText = item.value;
+        }
+    </script>
+</body>
+</html>

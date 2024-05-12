@@ -59,6 +59,15 @@
             display: flex;
             justify-content: space-between;
         }
+        .new-task h4 {
+            width: 95%;
+            text-align: left;
+            color: #fff;
+            word-wrap: break-word;
+        }
+        .new-task input{
+            width: 5%;
+        }
     </style>
 </head>
 <body>
@@ -76,21 +85,42 @@
 
 
     <script >
+
+        var setInlocal = [];
+        if(localStorage.getItem('itemSave') === null ){
+            localStorage.setItem('itemSave',JSON.stringify(setInlocal))
+        }else{
+            setInlocal = JSON.parse(localStorage.getItem('itemSave'))
+        }
+
         var inputItem = document.querySelector('#add-task'); 
         console.log(inputItem);
         inputItem.onclick = addItem;
+
         function addItem(){
             var item = document.querySelector('#item-list');
             var list = document.querySelector('.home-work');
             var newDiv = document.createElement('div');
             newDiv.classList.add('new-task');
-            var textValue = document.createElement('h2');
+            var textValue = document.createElement('h4');
             var newInput = document.createElement('input');
             newInput.setAttribute('type','checkbox');
             newDiv.append(textValue,newInput)
             list.append(newDiv);
-            textValue.innerText = item.value;
+            textValue.innerText = item.value;   
+            saveData(item.value);        
         }
+        function creatTask(){
+            document.querySelector('.home-work').innerHTML = `<div>${setInlocal.map((task)=>{
+                return `<div class='new-task'><h4>${task}</h4><input type='checkbox'></div>`;
+            }).join('')}</div>`
+        }
+        function saveData(data ){
+            setInlocal.push(data);
+            localStorage.setItem('itemSave',JSON.stringify(setInlocal))
+        }
+        creatTask()
+
     </script>
 </body>
 </html>

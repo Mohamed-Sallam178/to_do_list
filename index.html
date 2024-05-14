@@ -114,7 +114,34 @@
             list.append(newDiv);
             textValue.innerText = item.value;
             item.value='';
+            errorMsg(item);
+
+            newInput.onclick = ()=>{
+                console.log(newInput.value)
+                function read(){
+                    document.querySelector('input[type="checkbox"]:checked');
+                    console.log('checked')   ;
+                }
+                read()
+            }
         }
+        // }
+        // var btnRemove = document.querySelector('#remove-task');
+        // btnRemove.onclick = 
+
+
+
+        function errorMsg(item){
+            if(item.value === ''){
+                console.log('error')
+            }else{console.log('gkjlfdgslkjgdsg');}
+        }
+
+
+
+
+
+
 
     </script>
 </body>
@@ -163,3 +190,4 @@ function saveData(data ){
     localStorage.setItem('itemSave',JSON.stringify(setInlocal))
 }
 creatTask() -->
+

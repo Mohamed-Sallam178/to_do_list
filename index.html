@@ -95,13 +95,12 @@
     </div>
 
 
-
     <script >
 
         var inputItem = document.querySelector('#add-task'); 
-        console.log(inputItem);
         inputItem.onclick = addItem;
 
+        // FUNCTION TO ADD ITEM AND CHECKBOX
         function addItem(){
             var item = document.querySelector('#item-list');
             var list = document.querySelector('.home-work');
@@ -114,32 +113,48 @@
             list.append(newDiv);
             textValue.innerText = item.value;
             item.value='';
-            errorMsg(item);
+        }
 
-            newInput.onclick = ()=>{
-                console.log(newInput.value)
-                function read(){
-                    document.querySelector('input[type="checkbox"]:checked');
-                    console.log('checked')   ;
+        // FUNCTION FOR REMOVE ALL ITEMS 
+        function selBox(newInput){
+            var removeBtn = document.querySelector('#remove-task');
+            removeBtn.onclick = (newInput)=>{
+                var listAdd = document.querySelectorAll('.new-task')
+                for (var i = 0; i < listAdd.length; i++){
+                    listAdd[i].remove();
                 }
-                read()
             }
         }
-        // }
-        // var btnRemove = document.querySelector('#remove-task');
-        // btnRemove.onclick = 
+        selBox()
+        
 
-
-
-        function errorMsg(item){
-            if(item.value === ''){
-                console.log('error')
-            }else{console.log('gkjlfdgslkjgdsg');}
+        
+        // FUNCTION TO REMOVE ONLY CHECKED ITEM 
+        function removeCheck(removeBtn,newInput){
+            // var itemCheck = document.querySelector(newInput)
+            // if(newInput.value === true){
+            //     console.log();
+            // }
+            console.log(newInput);
         }
 
 
 
+        
+        // var btnRemove = document.querySelector('#remove-task');
+        // btnRemove.onclick = 
+        // function errorMsg(item){
+        //     if(item.value === ''){
+        //         console.log('error')
+        //     }else{console.log('gkjlfdgslkjgdsg');}
+        // }
 
+
+
+        // var removeBtn = document.querySelector('#remove-task');
+        //     removeBtn.onclick = (newInput)=>{
+        //         console.log(newInput.value);
+        //     }
 
 
 
